@@ -1,0 +1,53 @@
+#!/usr/bin/python3
+
+import configparser
+import os
+import re
+
+
+def read_gitmodules(repo_path):
+    """
+    Reads and parses the .gitmodules file from a Git repository.
+
+    Args:
+        repo_path (str): The path to the Git repository containing the .gitmodules file.
+
+    Returns:
+        dict: A dictionary representing the parsed .gitmodules file, or None if the file doesn't exist.
+    """
+    gitmodules_path = os.path.join(repo_path, ".gitmodules")
+
+    if not os.path.exists(gitmodules_path):
+        print(f"Error: .gitmodules file not found at {gitmodules_path}")
+        return None
+
+    config = configparser.ConfigParser()
+    config.read(gitmodules_path)
+
+    modules = {}
+    for section in config.sections():
+        if section.startswith("submodule"):
+            name = section
+            modules[name] = dict(config.items(section))
+    return modules
+
+
+# Example usage:
+repo_path = "."  # Current directory, assuming it's a Git repository
+submodules = read_gitmodules(repo_path)
+
+with open("./README.md", "r+") as readme:
+    readme_content = readme.read()
+
+    for mt in re.findall(r'\[(submodule\s*"[^"]+")\]', readme_content):
+        sub_found = submodules.get(mt, None)
+        if sub_found:
+            mt_to_replace=f'[{mt}]'
+            readme_content = readme_content.replace(mt_to_replace, sub_found["url"])
+
+    readme.write(readme_content)
+
+
+
+
+
