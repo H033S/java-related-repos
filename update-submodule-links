@@ -36,7 +36,9 @@ def read_gitmodules(repo_path):
 repo_path = "."  # Current directory, assuming it's a Git repository
 submodules = read_gitmodules(repo_path)
 
-with open("./README.md", "r+") as readme:
+readme_content = ""
+
+with open("./README.md", "r") as readme:
     readme_content = readme.read()
 
     for mt in re.findall(r'\[(submodule\s*"[^"]+")\]', readme_content):
@@ -45,6 +47,7 @@ with open("./README.md", "r+") as readme:
             mt_to_replace=f'[{mt}]'
             readme_content = readme_content.replace(mt_to_replace, sub_found["url"])
 
+with open("./README.md", "w") as readme:
     readme.write(readme_content)
 
 
