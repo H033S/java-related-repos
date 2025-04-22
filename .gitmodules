@@ -4,3 +4,21 @@
 [submodule "spring-boot-jpa-learning"]
 	path = spring-boot-jpa-learning
 	url = https://github.com/H033S/spring-boot-jpa-learning
+[submodule "spring-boot-expeditors-training-anil-notes"]
+	path = spring-boot-expeditors-training-anil-notes
+	url = https://github.com/H033S/spring-boot-expeditors-training-anil-notes
+[submodule "spring-boot-expeditors-training-adoption-service"]
+	path = spring-boot-expeditors-training-adoption-service
+	url = https://github.com/H033S/spring-boot-expeditors-training-adoption-service
+[submodule "spring-boot-expeditors-training-capstone-1"]
+	path = spring-boot-expeditors-training-capstone-1
+	url = https://github.com/H033S/spring-boot-expeditors-training-capstone-1
+[submodule "spring-boot-task-manager-test"]
+	path = spring-boot-task-manager-test
+	url = https://github.com/H033S/spring-boot-task-manager-test
+[submodule "spring-boot-expeditors-training-exception-handler-implementation"]
+	path = spring-boot-expeditors-training-exception-handler-implementation
+	url = https://github.com/H033S/spring-boot-expeditors-training-exception-handler-implementation
+[submodule "spring-boot-validations"]
+	path = spring-boot-validations
+	url = https://github.com/H033S/spring-boot-validations
